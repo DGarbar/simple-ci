@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-searcher
+  labels:
+    app: ci-searcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ci-searcher
+  template:
+    metadata:
+      name: ci-searcher
+      labels:
+        app: ci-searcher
+    spec:
+      containers:
+        - name: ci-searcher-back
+          image: gcr.io/testkubergl/ci-searcher:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: ci-searcher

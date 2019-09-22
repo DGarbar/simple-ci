@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ci-searcher
+  labels:
+    app: ci-searcher
+spec:
+  selector:
+    app: ci-searcher
+  ports:
+    - name: searcher
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

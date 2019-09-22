@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ci-web
+  labels:
+    app: ci-web
+spec:
+  selector:
+    app: ci-web
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer

@@ -1,0 +1,30 @@
+apiVersion: skaffold/v1beta14
+kind: Config
+build:
+  artifacts:
+    - image: gcr.io/testkubergl/ci-web
+      context: ./web/
+      jib: {}
+    - image: gcr.io/testkubergl/ci-searcher
+      context: ./searcher/
+      jib: {}
+
+deploy:
+  kubectl:
+    manifests:
+      - ./web/k8s/*
+      - ./searcher/k8s/mysql/*
+      - ./searcher/k8s/*
+      - ./k8s/*
+
+portForward:
+  - resourceType: deployment
+    resourceName: searcher
+    port: 8080
+    localPort: 9000
+
+# optional profile to run the jib build on Google Cloud Build
+profiles:
+  - name: gcb
+    build:
+      googleCloudBuild: {}

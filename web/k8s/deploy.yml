@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-web
+  labels:
+    app: ci-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: ci-web
+      labels:
+        app: ci-web
+    spec:
+      containers:
+        - name: ci-web
+          image: gcr.io/testkubergl/ci-web
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: ci-web

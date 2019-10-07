@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-frontend
+  labels:
+    app: ci-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ci-frontend
+  template:
+    metadata:
+      labels:
+        app: ci-frontend
+    spec:
+      containers:
+        - name: ci-frontend
+          image: gcr.io/testkubergl/ci-frontend
+#          imagePullPolicy: IfNotPresent
+          env:
+            - name: spring_profiles_active
+              value: prod
+      restartPolicy: Always
+

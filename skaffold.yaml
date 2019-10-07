@@ -5,23 +5,22 @@ build:
     - image: gcr.io/testkubergl/ci-web
       context: ./web/
       jib: {}
-    - image: gcr.io/testkubergl/ci-searcher
-      context: ./searcher/
+    - image: gcr.io/testkubergl/ci-frontend
+      context: ./frontend/
       jib: {}
 
 deploy:
   kubectl:
     manifests:
       - ./web/k8s/*
-      - ./searcher/k8s/mysql/*
-      - ./searcher/k8s/*
-      - ./k8s/*
+      - ./frontend/k8s/*
+#      - ./k8s/*y
 
-portForward:
-  - resourceType: deployment
-    resourceName: searcher
-    port: 8080
-    localPort: 9000
+#portForward:
+#  - resourceType: deployment
+#    resourceName: searcher
+#    port: 8080
+#    localPort: 9000
 
 # optional profile to run the jib build on Google Cloud Build
 profiles:

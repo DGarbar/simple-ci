@@ -6,17 +6,16 @@ metadata:
     app: ci-web
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: ci-web
   template:
     metadata:
-      name: ci-web
       labels:
         app: ci-web
     spec:
       containers:
         - name: ci-web
           image: gcr.io/testkubergl/ci-web
-          imagePullPolicy: IfNotPresent
-      restartPolicy: Always
-  selector:
-    matchLabels:
-      app: ci-web
+#          imagePullPolicy: IfNotPresent
+#      restartPolicy: Always

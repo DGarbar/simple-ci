@@ -1,6 +1,6 @@
-package com.simpleci.web.controller;
+package com.simpleci.frontend.controller;
 
-import com.simpleci.web.service.HelloService;
+import com.simpleci.frontend.service.HelloService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +18,16 @@ public class HelloController {
 
 	@GetMapping
 	private Mono<String> getHello() {
-		return Mono.just("Hello From WEB");
+		return Mono.just("Hello From FrontEnd");
 	}
 
-	@GetMapping(value = "/fluxStream", produces = "text/event-stream")
-	private Flux<Integer> getStreamFluxOfNumber(
-		@RequestParam(required = false, defaultValue = "2") int b) {
-		return helloService.getNumber(b);
+	@GetMapping(value = "/internal", produces = "text/event-stream")
+	private Flux<String> getToInternalService() {
+		return helloService.internalServiceCall(2);
+	}
+
+	@GetMapping(value = "/external")
+	private Mono<String> getToExternalService() {
+		return helloService.externalService();
 	}
 }

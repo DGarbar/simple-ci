@@ -1,4 +1,4 @@
-package com.simpleci.web;
+package com.simpleci.frontend;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

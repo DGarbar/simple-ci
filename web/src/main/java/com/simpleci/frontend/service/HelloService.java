@@ -1,4 +1,4 @@
-package com.simpleci.web.service;
+package com.simpleci.frontend.service;
 
 import java.time.Duration;
 import java.util.stream.IntStream;

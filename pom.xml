@@ -28,6 +28,7 @@
   <modules>
     <module>searcher</module>
     <module>web</module>
+    <module>frontend</module>
   </modules>
 
   <dependencyManagement>

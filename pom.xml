@@ -21,7 +21,7 @@
 
     <!-- plugin versions -->
     <checkstyle-plugin.version>2.17</checkstyle-plugin.version>
-    <checkstyle.version>8.18</checkstyle.version>
+    <checkstyle.version>8.29</checkstyle.version>
     <jib.version>1.6.0</jib.version>
   </properties>
 
